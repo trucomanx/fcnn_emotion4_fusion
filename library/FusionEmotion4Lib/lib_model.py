@@ -44,7 +44,10 @@ def load_model_from_extern(model,file_of_weight):
     
     return model;
 
-def create_model_encoder(load_weights=True,file_of_weight='',ncod=15):
+
+
+
+def create_model(load_weights=True,file_of_weight='',ncod=15):
     '''
     Retorna un modelo para la clasificación.
     Adicionalmente, si el archivo `file_of_weight` existe los pesos son cargados.
@@ -56,162 +59,19 @@ def create_model_encoder(load_weights=True,file_of_weight='',ncod=15):
     '''
     
     func_act=tf.keras.layers.LeakyReLU(alpha=0.01);
-
-
-    # modelo nuevo
-    model = tf.keras.Sequential([
-        tf.keras.layers.Dense(8*ncod+1, activation=func_act, input_shape=(51,) ),
-        tf.keras.layers.Dense(4*ncod+1, activation=func_act ),
-        tf.keras.layers.Dense(2*ncod+1, activation=func_act ),
-        tf.keras.layers.Dense(2*ncod+1, activation=func_act ),
-        tf.keras.layers.Dense(ncod, activation='softmax')
-    ])
-    
-    if load_weights==True:
-        model=load_model_from_intern(model,'model_encoder.h5');
-    
-    if len(file_of_weight)!=0:
-        model=load_model_from_extern(model,file_of_weight);
-    
-    return model;
-
-
-def create_model_decoder(load_weights=True,file_of_weight='',ncod=15):
-    '''
-    Retorna un modelo para la clasificación.
-    Adicionalmente, si el archivo `file_of_weight` existe los pesos son cargados.
-    
-    :param file_of_weight: Archivo donde se encuentran los pesos.
-    :type file_of_weight: str
-    :return: Retorna un modelo de red neuronal
-    :rtype: tensorflow.python.keras.engine.sequential.Sequential
-    '''
-    
-    func_act=tf.keras.layers.LeakyReLU(alpha=0.01);
-
+    input_len=12;
 
     # modelo nuevo
     model = tf.keras.Sequential([
-        tf.keras.layers.Dense(2*ncod+1, activation=func_act, input_shape=(ncod,) ),
-        tf.keras.layers.Dense(2*ncod+1, activation=func_act),
-        tf.keras.layers.Dense(4*ncod+1, activation=func_act),
-        tf.keras.layers.Dense(8*ncod+1, activation=func_act),
-        tf.keras.layers.Dense(51, activation=func_act)
-    ])
-    
-    if load_weights==True:
-        model=load_model_from_intern(model,'model_decoder.h5');
-    
-    if len(file_of_weight)!=0:
-        model=load_model_from_extern(model,file_of_weight);
-    
-    return model;
-
-def create_model_encdec(load_weights=True,file_of_weight='',ncod=15):
-    '''
-    Retorna un modelo para la clasificación.
-    Adicionalmente, si el archivo `file_of_weight` existe los pesos son cargados.
-    
-    :param file_of_weight: Archivo donde se encuentran los pesos.
-    :type file_of_weight: str
-    :return: Retorna un modelo de red neuronal
-    :rtype: tensorflow.python.keras.engine.sequential.Sequential
-    '''
-    
-
-    # modelo nuevo
-    encoder = create_model_encoder( load_weights=False, file_of_weight='', ncod=ncod);
-    decoder = create_model_decoder( load_weights=False, file_of_weight='', ncod=ncod);
-    
-    model = tf.keras.Sequential([
-        tf.keras.layers.Input(shape=(51,) ),
-        encoder,
-        decoder
-    ]);
-    
-    if load_weights==True:
-        model=load_model_from_intern(model,'model_encdec.h5');
-    
-    if len(file_of_weight)!=0:
-        model=load_model_from_extern(model,file_of_weight);
-    
-    return model;
-
-def create_sequential_cls(ncod):
-    '''
-    '''    
-    func_act=tf.keras.layers.LeakyReLU(alpha=0.01);
-    
-    # modelo nuevo
-    model = tf.keras.Sequential([
+        tf.keras.layers.Input(shape=(input_len,) ),
         tf.keras.layers.Dense(6*ncod+1, activation=func_act),
         tf.keras.layers.Dense(2*ncod+1, activation=func_act),
         tf.keras.layers.Dense(ncod, activation=func_act),
         tf.keras.layers.Dense(4, activation='softmax')
     ])
     
-    return model;
-
-def create_model_enccls(load_weights=True,file_of_weight='',file_of_weight_full=True,ncod=15):
-    '''
-    Retorna un modelo para la clasificación.
-    Adicionalmente, si el archivo `file_of_weight` existe los pesos son cargados.
-    
-    :param file_of_weight: Archivo donde se encuentran los pesos.
-    :type file_of_weight: str
-    :return: Retorna un modelo de red neuronal
-    :rtype: tensorflow.python.keras.engine.sequential.Sequential
-    '''
-    func_act=tf.keras.layers.LeakyReLU(alpha=0.01);
-        
-    # modelo nuevo
-    if len(file_of_weight)!=0 and file_of_weight_full==True:
-        encoder = create_model_encoder( load_weights=False, file_of_weight='', ncod=ncod);
-    else:
-        encoder = create_model_encoder( load_weights=False, file_of_weight=file_of_weight, ncod=ncod);
-    
-    encoder.trainable=False;
-    
-    seq_cls=create_sequential_cls(ncod);
-        
-    model = tf.keras.Sequential([
-        tf.keras.layers.Input(shape=(51,) ),
-        encoder,
-        seq_cls
-    ])
-    
-    
     if load_weights==True:
-        model=load_model_from_intern(model,'model_enccls.h5');
-    
-    if len(file_of_weight)!=0 and file_of_weight_full==True:
-        model=load_model_from_extern(model,file_of_weight);
-    
-    return model;
-
-def create_model_onlycls(load_weights=True,file_of_weight='',ncod=15):
-    '''
-    Retorna un modelo para la clasificación.
-    Adicionalmente, si el archivo `file_of_weight` existe los pesos son cargados.
-    
-    :param file_of_weight: Archivo donde se encuentran los pesos.
-    :type file_of_weight: str
-    :return: Retorna un modelo de red neuronal
-    :rtype: tensorflow.python.keras.engine.sequential.Sequential
-    '''
-    func_act=tf.keras.layers.LeakyReLU(alpha=0.01);
-        
-
-    seq_cls=create_sequential_cls(ncod);
-        
-    model = tf.keras.Sequential([
-        tf.keras.layers.Input(shape=(51,) ),
-        seq_cls
-    ])
-    
-    
-    if load_weights==True:
-        model=load_model_from_intern(model,'model_onlycls_ncod'+str(ncod)+'.h5');
+        model=load_model_from_intern(model,'model_ncod'+str(ncod)+'.h5');
     
     if len(file_of_weight)!=0:
         model=load_model_from_extern(model,file_of_weight);
@@ -303,7 +163,7 @@ def save_model_history(hist, fpath,show=True, labels=['accuracy','loss']):
     
     # Open file
     fid = open(fpath, 'w')
-    print('accuracy,val_accuracy,loss,val_loss', file = fid)
+    print(labels[0]+',val_'+labels[0]+','+labels[1]+',val_'+labels[1], file = fid)
 
     try:
         # Iterate through
