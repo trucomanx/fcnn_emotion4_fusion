@@ -5,13 +5,15 @@ PyCommand='#!/usr/bin/python3
 json_filename="training_data_results.json"
 
 model_list=["cls_ncod7",
+            "cls_ncod8",
             "cls_ncod9",
+            "cls_ncod10",
             "cls_ncod11",
+            "cls_ncod12",
             "cls_ncod13",
+            "cls_ncod14",
             "cls_ncod15",
-            "cls_ncod17",
-            "cls_ncod19",
-            "cls_ncod21"
+            "cls_ncod16"
             ];
 
 info_list=[ "train_categorical_accuracy",
@@ -39,7 +41,7 @@ DName='ber2024-fusion'
 
 InTrD=$BaseDir'/DATASET/TESE/BER/BER2024/BER2024-FUSION'
 InTrF='train.csv'
-InTsD=$BaseDir'/DATASET/TESE/BER/BER2024/BER2024-FUSION/ber2024-source/efficientnet_b3_efficientnet_b3_ncod20'
+InTsD=$BaseDir'/DATASET/TESE/BER/BER2024/BER2024-FUSION/ber2024-source/ncod20_efficientnet_b3_efficientnet_b3_step1'
 InTsF='test.csv'
 
 ################################################################################
@@ -51,10 +53,10 @@ echo "$PyCommand" | cat - 'main.py' > temp && mv temp $OutDir/$DName/training_va
 
 ipynb-py-convert training_holdout.ipynb training_holdout.py
 
-for ncod in 7 9 11 13 15 17 19 21; do
+for ncod in 7 8 9 10 11 12 13 14 15 16 ; do
     echo " "
-    python3 training_holdout.py --epochs  2000 \
-                                --patience 100 \
+    python3 training_holdout.py --epochs  5000 \
+                                --patience 500 \
                                 --seed 0 \
                                 --ncod $ncod \
                                 --batch-size 1024 \
