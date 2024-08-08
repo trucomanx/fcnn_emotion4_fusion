@@ -145,8 +145,8 @@ def save_model_history(hist, fpath,show=True, labels=['accuracy','loss']):
     plt.xlabel('Epochs')
     #
     plt.subplot(1,2,2)
-    plt.plot(rango_epocas,    loss,label=labels[1]+' training')
-    plt.plot(rango_epocas,val_loss,label=labels[1]+' validation')
+    plt.semilogy(rango_epocas,    loss,label=labels[1]+' training')
+    plt.semilogy(rango_epocas,val_loss,label=labels[1]+' validation')
     plt.legend(loc='upper right')
     #plt.title('Analysis loss')
     plt.ylabel(labels[1])

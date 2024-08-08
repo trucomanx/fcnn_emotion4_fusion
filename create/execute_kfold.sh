@@ -4,9 +4,14 @@ PyCommand='#!/usr/bin/python3
 
 json_filename="kfold_data_results.json"
 
-model_list=["onlycls_ncod18",
-            "onlycls_ncod20",
-            "onlycls_ncod22"
+model_list=["cls_ncod6",
+            "cls_ncod7",
+            "cls_ncod8",
+            "cls_ncod9",
+            "cls_ncod10",
+            "cls_ncod11",
+            "cls_ncod12",
+            "cls_ncod13"
             ];
 
 info_list=[ "mean_val_categorical_accuracy",
@@ -30,14 +35,12 @@ BaseDir='/media/fernando/Expansion'
 # 
 #BaseDir='/media/fernando/B0EA304AEA300EDA/Dados/Fernando'
 
-OutDir=$BaseDir'/OUTPUTS/DOCTORADO2/fcnn_emotion4_1'
+OutDir=$BaseDir'/OUTPUTS/DOCTORADO2/fcnn_emotion4_fusion_1'
 
+DName='ber2024-fusion'
 
-DName='ber2024-skel'
-
-
-if [ "$DName" = "ber2024-skel" ]; then
-    InTrD=$BaseDir'/DATASET/TESE/BER/BER2024/BER2024-SKELETON'
+if [ "$DName" = "ber2024-fusion" ]; then
+    InTrD=$BaseDir'/DATASET/TESE/BER/BER2024/BER2024-FUSION'
     InTrF='train.csv'
 fi
 
@@ -48,22 +51,21 @@ echo "$PyCommand" | cat - 'main.py' > temp && mv temp $OutDir/$DName/cross-valid
 
 ################################################################################
 
-ipynb-py-convert kfold_validation_onlycls.ipynb kfold_validation_onlycls.py
+ipynb-py-convert kfold_validation.ipynb kfold_validation.py
 
-# 15 18 20 22
-for ncod in 25 11 29; do
+for ncod in 6 7 8 9 10 11 12 13; do
     echo " "
-    python3 kfold_validation_onlycls.py --epochs  10000 \
-                                        --patience 2000 \
-                                        --seed 0 \
-                                        --ncod $ncod \
-                                        --batch-size 2048 \
-                                        --dataset-dir $InTrD \
-                                        --dataset-file $InTrF \
-                                        --dataset-name $DName \
-                                        --output-dir $OutDir
+    python3 kfold_validation.py --epochs  5000 \
+                                --patience 500 \
+                                --seed 0 \
+                                --ncod $ncod \
+                                --batch-size 2048 \
+                                --dataset-dir $InTrD \
+                                --dataset-file $InTrF \
+                                --dataset-name $DName \
+                                --output-dir $OutDir
 
 done
 
-rm -f kfold_validation_onlycls.py
+rm -f kfold_validation.py
 
