@@ -107,7 +107,7 @@ for info in info_list:
     plt.bar(model_list, testing[info])
 
     for n in range(len(model_list)):
-        plt.text(model_list[n], testing[info][n]+0.005, round(testing[info][n],3),fontsize=16)
+        plt.text(model_list[n], testing[info][n]+0.005, round(testing[info][n],4),fontsize=16)
 
     plt.title(info)
     plt.ylim(np.min(testing[info])/1.1, np.max(testing[info])*1.1) 
