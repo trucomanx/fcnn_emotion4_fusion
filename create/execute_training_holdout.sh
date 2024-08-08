@@ -4,7 +4,8 @@ PyCommand='#!/usr/bin/python3
 
 json_filename="training_data_results.json"
 
-model_list=["cls_ncod7",
+model_list=["cls_ncod6",
+            "cls_ncod7",
             "cls_ncod8",
             "cls_ncod9",
             "cls_ncod10",
@@ -53,7 +54,7 @@ echo "$PyCommand" | cat - 'main.py' > temp && mv temp $OutDir/$DName/training_va
 
 ipynb-py-convert training_holdout.ipynb training_holdout.py
 
-for ncod in 7 8 9 10 11 12 13 14 15 16 ; do
+for ncod in 6 7 8 9 10 11 12 13 14 15 16 ; do
     echo " "
     python3 training_holdout.py --epochs  5000 \
                                 --patience 500 \
