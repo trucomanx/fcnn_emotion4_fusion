@@ -64,7 +64,6 @@ def create_model(load_weights=True,file_of_weight='',ncod=15):
     # modelo nuevo
     model = tf.keras.Sequential([
         tf.keras.layers.Input(shape=(input_len,) ),
-        #tf.keras.layers.Dense(2*ncod+1, activation=func_act),
         tf.keras.layers.Dense(ncod, activation=func_act),
         tf.keras.layers.Dense(4, activation='softmax')
     ])

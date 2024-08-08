@@ -59,7 +59,7 @@ for ncod in 6 7 8 9 10 11 12 13; do
                                 --patience 500 \
                                 --seed 0 \
                                 --ncod $ncod \
-                                --batch-size 2048 \
+                                --batch-size 1024 \
                                 --dataset-dir $InTrD \
                                 --dataset-file $InTrF \
                                 --dataset-name $DName \
