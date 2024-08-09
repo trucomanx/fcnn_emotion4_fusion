@@ -116,7 +116,8 @@ for info in info_list:
     plt.title(info)
     plt.ylim(MIN-D/3, MAX+D/3) 
     plt.grid(True) 
-
+    
+    plt.tight_layout()
     plt.savefig(base_name+'_'+info+image_ext);
 
     #plt.show()
@@ -135,7 +136,8 @@ if 'erro_bar' in locals():
         plt.title(item[0]+' , '+item[1])
         plt.ylim(MIN-D/3, MAX+D/3) 
         plt.grid(True) 
-
+        
+        plt.tight_layout()
         plt.savefig(base_name+'_error_'+item[0]+image_ext);
 
 if 'p_matrix' in locals():
@@ -164,7 +166,7 @@ if 'p_matrix' in locals():
     
     
     # Plotar a matriz de confusão
-    plt.figure(figsize=(10, 8))
+    plt.figure(figsize=(20, 16))
     ax=sns.heatmap(p_values, annot=True, fmt='.2f', cmap="coolwarm", xticklabels=model_list, yticklabels=model_list, mask=np.isnan(p_values))
     ax.grid(True, which='both', color='gray', linestyle='--', linewidth=0.5)
     # Rotacionar e ajustar os rótulos

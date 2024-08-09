@@ -56,12 +56,20 @@ echo "$PyCommand" | cat - 'main.py' > temp && mv temp $OutDir/$DName/training_va
 
 ipynb-py-convert training_holdout.ipynb training_holdout.py
 
-for ncod in 6 7 8 9 10 11 12 13 14 15 16 ; do 
+NcodList=(6 7 8 9 10 11 12 13 14 15 16)
+SeedList=(0 0 0 0 0  0  0  0  0  0  0)
+
+#NcodList=(11 11 11 11 11 11)
+#SeedList=(19 23 29 31 37 41)
+
+for i in "${!NcodList[@]}" ; do 
     echo " "
+    Ncod=${NcodList[$i]}
+    Seed=${SeedList[$i]}
     python3 training_holdout.py --epochs  500 \
                                 --patience 50 \
-                                --seed 0 \
-                                --ncod $ncod \
+                                --seed $Seed \
+                                --ncod $Ncod \
                                 --batch-size 1024 \
                                 --dataset-train-dir $InTrD \
                                 --dataset-train-file $InTrF \
