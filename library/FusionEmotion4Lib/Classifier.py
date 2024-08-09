@@ -13,7 +13,7 @@ class Emotion4Classifier:
     Atributos:
         modelo: Model returned by tensorflow.
     """
-    def __init__(self,file_of_weight='',ncod=20):
+    def __init__(self,file_of_weight='',ncod=11):
         """Inicializer of class Emotion4Classifier.
         
         Args:

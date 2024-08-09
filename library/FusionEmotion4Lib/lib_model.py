@@ -47,7 +47,7 @@ def load_model_from_extern(model,file_of_weight):
 
 
 
-def create_model(load_weights=True,file_of_weight='',ncod=15):
+def create_model(load_weights=True,file_of_weight='',ncod=11):
     '''
     Retorna un modelo para la clasificación.
     Adicionalmente, si el archivo `file_of_weight` existe los pesos son cargados.

@@ -6,16 +6,16 @@ Since the code uses an old version of keras, it needs to be placed at the beginn
 
     import os
     os.environ['TF_USE_LEGACY_KERAS'] = '1'
-    
+
     import FusionEmotion4Lib.Classifier as fec
     import numpy as np
-    
+
     cls=fec.Emotion4Classifier();
-    
-    vec=np.random.randn(12);
-    
+
+    vec=np.random.rand(12);
+
     res=cls.predict_vec(vec);
-    
+
     print(res);
 
 
