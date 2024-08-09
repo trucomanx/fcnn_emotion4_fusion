@@ -40,8 +40,10 @@ OutDir=$BaseDir'/OUTPUTS/DOCTORADO2/fcnn_emotion4_fusion_1'
 
 DName='ber2024-fusion'
 
-InTrD=$BaseDir'/DATASET/TESE/BER/BER2024/BER2024-FUSION'
+InTrD=$BaseDir'/DATASET/TESE/BER/BER2024/BER2024-FUSION/ber2024-source/ncod20_efficientnet_b3_efficientnet_b3_step1'
 InTrF='train.csv'
+InDmD=$BaseDir'/DATASET/TESE/BER/BER2024/BER2024-FUSION/dummy/L30000_p0.15'
+InDmF='test.csv'
 InTsD=$BaseDir'/DATASET/TESE/BER/BER2024/BER2024-FUSION/ber2024-source/ncod20_efficientnet_b3_efficientnet_b3_step1'
 InTsF='test.csv'
 
@@ -54,15 +56,17 @@ echo "$PyCommand" | cat - 'main.py' > temp && mv temp $OutDir/$DName/training_va
 
 ipynb-py-convert training_holdout.ipynb training_holdout.py
 
-for ncod in 6 7 8 9 10 11 12 13 14 15 16 ; do
+for ncod in 6 7 8 9 10 11 12 13 14 15 16 ; do 
     echo " "
-    python3 training_holdout.py --epochs  5000 \
-                                --patience 500 \
+    python3 training_holdout.py --epochs  500 \
+                                --patience 50 \
                                 --seed 0 \
                                 --ncod $ncod \
                                 --batch-size 1024 \
                                 --dataset-train-dir $InTrD \
                                 --dataset-train-file $InTrF \
+                                --dataset-dummy-dir $InDmD \
+                                --dataset-dummy-file $InDmF \
                                 --dataset-test-dir $InTsD \
                                 --dataset-test-file $InTsF \
                                 --dataset-name $DName \

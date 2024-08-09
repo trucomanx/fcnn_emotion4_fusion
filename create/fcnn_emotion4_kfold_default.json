@@ -1,6 +1,8 @@
 {
-    "dataset_base_dir" : "/media/fernando/Expansion/DATASET/TESE/BER/BER2024/BER2024-FUSION",
+    "dataset_base_dir" : "/media/fernando/Expansion/DATASET/TESE/BER/BER2024/BER2024-FUSION/ber2024-source/ncod20_efficientnet_b3_efficientnet_b3_step1",
     "dataset_labels_file" : "train.csv",
+    "dataset_dummy_base_dir" : "/media/fernando/Expansion/DATASET/TESE/BER/BER2024/BER2024-FUSION/dummy/L30000_p0.15",
+    "dataset_dummy_labels_file" : "train.csv",
     "dataset_name" : "ber2024-fusion",
     "kfold" : 5,
     "batch_size" : 1024,
