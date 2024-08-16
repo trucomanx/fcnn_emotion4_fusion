@@ -47,7 +47,7 @@ def load_model_from_extern(model,file_of_weight):
 
 
 
-def create_model(load_weights=True,file_of_weight='',ncod=11):
+def create_model(load_weights=True, file_of_weight='', ncod=11, minus=None):
     '''
     Retorna un modelo para la clasificación.
     Adicionalmente, si el archivo `file_of_weight` existe los pesos son cargados.
@@ -59,17 +59,28 @@ def create_model(load_weights=True,file_of_weight='',ncod=11):
     '''
     
     func_act=tf.keras.layers.LeakyReLU(alpha=0.01);
-    input_len=12;
-
-    # modelo nuevo
-    model = tf.keras.Sequential([
-        tf.keras.layers.Input(shape=(input_len,) ),
-        tf.keras.layers.Dense(ncod, activation=func_act),
-        tf.keras.layers.Dense(4, activation='softmax')
-    ])
+    
+    if minus is None:
+        # modelo nuevo
+        model = tf.keras.Sequential([
+            tf.keras.layers.Input(shape=(12,) ),
+            tf.keras.layers.Dense(ncod, activation=func_act),
+            tf.keras.layers.Dense(4, activation='softmax')
+        ])
+    else:
+        # modelo nuevo
+        model = tf.keras.Sequential([
+            tf.keras.layers.Input(shape=(minus+8,) ),
+            tf.keras.layers.Dense(2*ncod+1, activation=func_act),
+            tf.keras.layers.Dense(ncod, activation=func_act),
+            tf.keras.layers.Dense(4, activation='softmax')
+        ])
     
     if load_weights==True:
-        model=load_model_from_intern(model,'model_ncod'+str(ncod)+'.h5');
+        if minus is None:
+            model=load_model_from_intern(model,'model_ncod'+str(ncod)+'.h5');
+        else:
+            model=load_model_from_intern(model,'model_minus'+str(minus)+'_ncod'+str(ncod)+'.h5');
     
     if len(file_of_weight)!=0:
         model=load_model_from_extern(model,file_of_weight);
