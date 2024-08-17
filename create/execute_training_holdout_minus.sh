@@ -4,7 +4,8 @@ PyCommand='#!/usr/bin/python3
 
 json_filename="training_data_results.json"
 
-model_list=["cls_minus20_ncod6",
+model_list=["cls_minus20_ncod5",
+            "cls_minus20_ncod6",
             "cls_minus20_ncod7",
             "cls_minus20_ncod8",
             "cls_minus20_ncod9",
@@ -58,8 +59,8 @@ echo "$PyCommand" | cat - 'main.py' > temp && mv temp $OutDir/$DName/training_va
 
 ipynb-py-convert training_holdout.ipynb training_holdout.py
 
-NcodList=(6 7 8 9 10 11 12 13 14 15 16)
-SeedList=(0 0 0 0 0  0  0  0  0  0  0)
+NcodList=(5 6 7 8 9 10 11 12 13 14 15 16)
+SeedList=(0 0 0 0 0 0  0  0  0  0  0  0)
 
 #NcodList=(11 11 11 11 11 11)
 #SeedList=(19 23 29 31 37 41)
@@ -69,7 +70,7 @@ for i in "${!NcodList[@]}" ; do
     Ncod=${NcodList[$i]}
     Seed=${SeedList[$i]}
     python3 training_holdout.py --epochs  1000 \
-                                --patience 100 \
+                                --patience 300 \
                                 --seed $Seed \
                                 --ncod $Ncod \
                                 --batch-size 1024 \
