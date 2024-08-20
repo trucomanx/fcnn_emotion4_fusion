@@ -13,7 +13,7 @@ class Emotion4Classifier:
     Atributos:
         modelo: Model returned by tensorflow.
     """
-    def __init__(self,file_of_weight='',ncod=11, minus=None):
+    def __init__(self,file_of_weight='',ncod=11, skel_size=None):
         """Inicializer of class Emotion4Classifier.
         
         Args:
@@ -24,12 +24,12 @@ class Emotion4Classifier:
             self.model = mpp.create_model(  load_weights=False,
                                             file_of_weight=file_of_weight,
                                             ncod=ncod,
-                                            minus=minus);
+                                            minus=skel_size);
         else:
             self.model = mpp.create_model(  load_weights=True,
                                             file_of_weight='',
                                             ncod=ncod,
-                                            minus=minus);
+                                            minus=skel_size);
 
     def from_skel_npvector(self,npvector):
         """Classify a skeleton data from a numpy vector object with N elements 
