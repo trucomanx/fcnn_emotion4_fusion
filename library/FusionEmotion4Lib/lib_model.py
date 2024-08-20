@@ -15,6 +15,7 @@ def load_model_from_intern(model,model_fname):
     path_of_model=os.path.join(directorio_actual,'models',model_fname);
     
     if os.path.exists(path_of_model):
+        print('')
         print("Loading the weights in:",path_of_model);
         try:
             model.load_weights(path_of_model);
@@ -29,6 +30,7 @@ def load_model_from_intern(model,model_fname):
     return model;
 
 def load_model_from_extern(model,file_of_weight):
+    print('')
     print("Loading the weights in:",file_of_weight);
     if os.path.exists(file_of_weight):
         #
