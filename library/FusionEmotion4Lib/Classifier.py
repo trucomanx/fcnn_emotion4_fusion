@@ -38,10 +38,22 @@ class Emotion4Classifier:
             npvector: Numpy vector with N elements 
         
         Returns:
-            int: The class of image.
+            int: The class.
         """
         return mpp.evaluate_model_from_npvector(self.model,
                                                 npvector);
+
+    def from_skel_npmatrix(self,npmatrix):
+        """Classify a skeleton data from a numpy matrix object with N elements 
+        
+        Args:
+            npmatrix: Numpy matrix with N columns and L lines
+        
+        Returns:
+            numpy.vector: Numpy vector with The class.
+        """
+        return mpp.evaluate_model_from_npmatrix(self.model,
+                                                npmatrix);
 
     def predict_vec(self,npvector):
         """Classify a skeleton data from a numpy vector object with N elements 
@@ -54,6 +66,18 @@ class Emotion4Classifier:
         """
         return mpp.predict_model_from_npvector( self.model,
                                                 npvector);
+
+    def predict_mat(self,npmatrix):
+        """Classify a skeleton data from a numpy matrix object with N columns ans L lines
+        
+        Args:
+            npmatr: Numpy matrix with N columns and L lines
+        
+        Returns:
+            int: The class of image.
+        """
+        return mpp.predict_model_from_npmatrix( self.model,
+                                                npmatrix);
 
     def target_labels(self):
         """Returns the categories of classifier.

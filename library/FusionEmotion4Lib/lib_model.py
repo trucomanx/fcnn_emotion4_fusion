@@ -111,6 +111,26 @@ def evaluate_model_from_npvector(model, npvector):
     
     return np.argmax(res);
 
+def evaluate_model_from_npmatrix(model, npmatrix):
+    '''
+    Evalua la red neuronal descrita en `modelo`, la entrada es leida desde um numpy matrix.
+    
+    :param model: Modelo de la red neuronal.
+    :type model: tensorflow.python.keras.engine.sequential.Sequential
+    :param npmatrix: Matrix a testar.
+    :type npmatrix: Numpy array
+    :return: Retorna la classificación.
+    :rtype: numpy vector
+    '''
+    
+    # Verifique o tipo de dado e converta se necessário
+    if npmatrix.dtype != np.float32:
+        npmatrix = npmatrix.astype(np.float32)
+    
+    res=model.predict( npmatrix, verbose=0);
+    
+    return np.argmax(res, axis=1);
+
 def predict_model_from_npvector(model, npvector):
     '''
     Evalua la red neuronal descrita en `modelo`, la entrada es leida desde um numpy vector.
@@ -132,6 +152,26 @@ def predict_model_from_npvector(model, npvector):
     res=model.predict( vec, verbose=0);
     
     return res[0];    
+    
+def predict_model_from_npmatrix(model, npmatrix):
+    '''
+    Evalua la red neuronal descrita en `modelo`, la entrada es leida desde um numpy matrix.
+    
+    :param model: Modelo de la red neuronal.
+    :type model: tensorflow.python.keras.engine.sequential.Sequential
+    :param npmatrix: matrix a testar.
+    :type npmatrix: Numpy array
+    :return: Retorna la classificación.
+    :rtype: numpy array
+    '''
+    
+    # Verifique o tipo de dado e converta se necessário
+    if npmatrix.dtype != np.float32:
+        npmatrix = npmatrix.astype(np.float32)
+    
+    res=model.predict( npmatrix, verbose=0);
+    
+    return res;    
 
 def save_model_history(hist, fpath,show=True, labels=['accuracy','loss']):
     ''''This function saves the history returned by model.fit to a tab-
