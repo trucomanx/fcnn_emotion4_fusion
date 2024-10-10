@@ -11,7 +11,24 @@ model_list=["cls_ncod6",
             "cls_ncod10",
             "cls_ncod11",
             "cls_ncod12",
-            "cls_ncod13"
+            "cls_ncod13",
+            "cls_ncod14",
+            "cls_ncod15",
+            "cls_ncod16",
+            "cls_ncod17",
+            "cls_ncod18",
+            "cls_ncod19",
+            "cls_ncod20",
+            "cls_ncod21",
+            "cls_ncod22",
+            "cls_ncod23",
+            "cls_ncod24",
+            "cls_ncod25",
+            "cls_ncod26",
+            "cls_ncod27",
+            "cls_ncod28",
+            "cls_ncod29",
+            "cls_ncod30"
             ];
 
 info_list=[ "mean_val_categorical_accuracy",
@@ -31,16 +48,16 @@ image_ext=".eps";
 '
 
 # HD
-BaseDir='/media/fernando/Expansion'
-# 
+#BaseDir='/media/fernando/Expansion'
+BaseDir='/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando'
 #BaseDir='/media/fernando/B0EA304AEA300EDA/Dados/Fernando'
 
-OutDir=$BaseDir'/OUTPUTS/DOCTORADO2/fcnn_emotion4_fusion_1'
+OutDir=$BaseDir'/OUTPUTS/DOCTORADO2/fcnn_emotion4_fusion_2'
 
 DName='ber2024-fusion'
 
 if [ "$DName" = "ber2024-fusion" ]; then
-    InTrD=$BaseDir'/DATASET/TESE/BER/BER2024/BER2024-FUSION/ber2024-source/ncod20_efficientnet_b3_efficientnet_b3_step1'
+    InTrD=$BaseDir'/DATASET/TESE/BER/BER2024/BER2024-FUSION/ber2024-source/ncod20_efficientnet_b3_efficientnet_b3_step2'
     InTrF='train.csv'
     InDmD=$BaseDir'/DATASET/TESE/BER/BER2024/BER2024-FUSION/dummy/L30000_p0.15'
     InDmF='test.csv'
@@ -55,7 +72,7 @@ echo "$PyCommand" | cat - 'main.py' > temp && mv temp $OutDir/$DName/cross-valid
 
 ipynb-py-convert kfold_validation.ipynb kfold_validation.py
 
-for ncod in 4 21 22 23 24 25 26 ; do #5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+for ncod in 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 ; do # 
     echo " "
     python3 kfold_validation.py --epochs  500 \
                                 --patience 50 \
