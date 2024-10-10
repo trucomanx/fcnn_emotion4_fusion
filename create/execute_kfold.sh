@@ -54,7 +54,7 @@ BaseDir='/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando'
 
 OutDir=$BaseDir'/OUTPUTS/DOCTORADO2/fcnn_emotion4_fusion_2'
 
-DName='ber2024-fusion'
+DName='ber2024-fusion-step2'
 
 if [ "$DName" = "ber2024-fusion" ]; then
     InTrD=$BaseDir'/DATASET/TESE/BER/BER2024/BER2024-FUSION/ber2024-source/ncod20_efficientnet_b3_efficientnet_b3_step2'
