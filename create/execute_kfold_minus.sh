@@ -37,16 +37,16 @@ sep=",";
 
 image_ext=".eps";
 '
-#
-BaseDir='/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando'
+
 # HD
 #BaseDir='/media/fernando/Expansion'
-# 
+BaseDir='/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando'
 #BaseDir='/media/fernando/B0EA304AEA300EDA/Dados/Fernando'
 
-OutDir=$BaseDir'/OUTPUTS/DOCTORADO2/fcnn_emotion4_fusion_1'
+OutDir=$BaseDir'/OUTPUTS/DOCTORADO2/fcnn_emotion4_fusion_2'
 
-DName='ber2024-fusion-minus20'
+#DName='ber2024-fusion-minus20'
+DName='ber2024-fusion-step2-minus20'
 
 if [ "$DName" = "ber2024-fusion-minus20" ]; then
     InTrD=$BaseDir'/DATASET/TESE/BER/BER2024/BER2024-FUSION/ber2024-source/efficientnet_b3_efficientnet_b3_ncod20_minus'
@@ -55,6 +55,12 @@ if [ "$DName" = "ber2024-fusion-minus20" ]; then
     InDmF='test.csv'
 fi
 
+if [ "$DName" = "ber2024-fusion-step2-minus20" ]; then
+    InTrD=$BaseDir'/DATASET/TESE/BER/BER2024/BER2024-FUSION/ber2024-source/ncod20_efficientnet_b3_efficientnet_b3_step2_minus'
+    InTrF='train.csv'
+    InDmD=$BaseDir'/DATASET/TESE/BER/BER2024/BER2024-FUSION/dummy/L30000_p0.15'
+    InDmF='test.csv'
+fi
 ################################################################################
 
 mkdir -p $OutDir/$DName/cross-validation_minus20
@@ -64,7 +70,7 @@ echo "$PyCommand" | cat - 'main.py' > temp && mv temp $OutDir/$DName/cross-valid
 
 ipynb-py-convert kfold_validation.ipynb kfold_validation.py
 
-for ncod in 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 ; do # 5 6 7 8 9 10 11 12 13 14 15 16
+for ncod in 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 ; do # 
     echo " "
     python3 kfold_validation.py --epochs  1000 \
                                 --patience 250 \
