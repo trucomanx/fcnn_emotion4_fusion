@@ -40,7 +40,7 @@ BaseDir='/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando'
 
 OutDir=$BaseDir'/OUTPUTS/DOCTORADO2/fcnn_emotion4_fusion_v2'
 
-DName='ber2024-fusion-step2-minus20'
+DName='ber2024-fusion-v2-minus20'
 
 InTrD=$BaseDir'/DATASET/TESE/BER/BER2024/BER2024-FUSION/ber2024-source/ncod53_efficientnet_b3_efficientnet_b3_v2'
 InTrF='train.csv'
