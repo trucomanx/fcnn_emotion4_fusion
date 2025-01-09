@@ -4,22 +4,22 @@ PyCommand='#!/usr/bin/python3
 
 json_filename="kfold_data_results.json"
 
-model_list=["cls_minus20_ncod5",
-            "cls_minus20_ncod6",
-            "cls_minus20_ncod7",
-            "cls_minus20_ncod8",
-            "cls_minus20_ncod9",
-            "cls_minus20_ncod10",
-            "cls_minus20_ncod11",
-            "cls_minus20_ncod12",
-            "cls_minus20_ncod13",
-            "cls_minus20_ncod14",
-            "cls_minus20_ncod15",
-            "cls_minus20_ncod16",
-            "cls_minus20_ncod17",
-            "cls_minus20_ncod18",
-            "cls_minus20_ncod19",
-            "cls_minus20_ncod20"
+model_list=["cls_minus53_ncod5",
+            "cls_minus53_ncod6",
+            "cls_minus53_ncod7",
+            "cls_minus53_ncod8",
+            "cls_minus53_ncod9",
+            "cls_minus53_ncod10",
+            "cls_minus53_ncod11",
+            "cls_minus53_ncod12",
+            "cls_minus53_ncod13",
+            "cls_minus53_ncod14",
+            "cls_minus53_ncod15",
+            "cls_minus53_ncod16",
+            "cls_minus53_ncod17",
+            "cls_minus53_ncod18",
+            "cls_minus53_ncod19",
+            "cls_minus53_ncod20"
             ];
 
 info_list=[ "mean_val_categorical_accuracy",
@@ -45,10 +45,10 @@ BaseDir='/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando'
 
 OutDir=$BaseDir'/OUTPUTS/DOCTORADO2/fcnn_emotion4_fusion_v2'
 
-DName='ber2024-fusion-v2-minus20'
+DName='ber2024-fusion-v2-minus53'
 
 
-if [ "$DName" = "ber2024-fusion-v2-minus20" ]; then
+if [ "$DName" = "ber2024-fusion-v2-minus53" ]; then
     InTrD=$BaseDir'/DATASET/TESE/BER/BER2024/BER2024-FUSION/ber2024-source/ncod53_efficientnet_b3_efficientnet_b3_minus_v2'
     InTrF='train.csv'
     InDmD=$BaseDir'/DATASET/TESE/BER/BER2024/BER2024-FUSION/dummy/L30000_p0.15'
@@ -56,8 +56,8 @@ if [ "$DName" = "ber2024-fusion-v2-minus20" ]; then
 fi
 ################################################################################
 
-mkdir -p $OutDir/$DName/cross-validation_minus20
-echo "$PyCommand" | cat - 'main.py' > temp && mv temp $OutDir/$DName/cross-validation_minus20/'main.py'
+mkdir -p $OutDir/$DName/cross-validation_minus53
+echo "$PyCommand" | cat - 'main.py' > temp && mv temp $OutDir/$DName/cross-validation_minus53/'main.py'
 
 ################################################################################
 

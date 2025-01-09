@@ -4,18 +4,18 @@ PyCommand='#!/usr/bin/python3
 
 json_filename="training_data_results.json"
 
-model_list=["cls_minus20_ncod5",
-            "cls_minus20_ncod6",
-            "cls_minus20_ncod7",
-            "cls_minus20_ncod8",
-            "cls_minus20_ncod9",
-            "cls_minus20_ncod10",
-            "cls_minus20_ncod11",
-            "cls_minus20_ncod12",
-            "cls_minus20_ncod13",
-            "cls_minus20_ncod14",
-            "cls_minus20_ncod15",
-            "cls_minus20_ncod16"
+model_list=["cls_minus53_ncod5",
+            "cls_minus53_ncod6",
+            "cls_minus53_ncod7",
+            "cls_minus53_ncod8",
+            "cls_minus53_ncod9",
+            "cls_minus53_ncod10",
+            "cls_minus53_ncod11",
+            "cls_minus53_ncod12",
+            "cls_minus53_ncod13",
+            "cls_minus53_ncod14",
+            "cls_minus53_ncod15",
+            "cls_minus53_ncod16"
             ];
 
 info_list=[ "train_categorical_accuracy",
@@ -40,13 +40,13 @@ BaseDir='/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando'
 
 OutDir=$BaseDir'/OUTPUTS/DOCTORADO2/fcnn_emotion4_fusion_v2'
 
-DName='ber2024-fusion-v2-minus20'
+DName='ber2024-fusion-v2-minus53'
 
-InTrD=$BaseDir'/DATASET/TESE/BER/BER2024/BER2024-FUSION/ber2024-source/ncod53_efficientnet_b3_efficientnet_b3_v2'
+InTrD=$BaseDir'/DATASET/TESE/BER/BER2024/BER2024-FUSION/ber2024-source/ncod53_efficientnet_b3_efficientnet_b3_minus_v2'
 InTrF='train.csv'
 InDmD=$BaseDir'/DATASET/TESE/BER/BER2024/BER2024-FUSION/dummy/L30000_p0.15'
 InDmF='train.csv'
-InTsD=$BaseDir'/DATASET/TESE/BER/BER2024/BER2024-FUSION/ber2024-source/ncod53_efficientnet_b3_efficientnet_b3_v2'
+InTsD=$BaseDir'/DATASET/TESE/BER/BER2024/BER2024-FUSION/ber2024-source/ncod53_efficientnet_b3_efficientnet_b3_minus_v2'
 InTsF='test.csv'
 
 ################################################################################
