@@ -61,9 +61,9 @@ DName='ber2024-fusion-v2'
 
 if [ "$DName" = "ber2024-fusion-v2" ]; then
     InTrD=$BaseDir'/DATASET/TESE/BER/BER2024/BER2024-FUSION/ber2024-source/ncod53_efficientnet_b3_efficientnet_b3_v2'
-    InTrF='train_refface.csv'
+    InTrF='train.csv'
     InDmD=$BaseDir'/DATASET/TESE/BER/BER2024/BER2024-FUSION/dummy/L30000_p0.15'
-    InDmF='test_refface.csv'
+    InDmF='test.csv'
 fi
 
 ################################################################################
