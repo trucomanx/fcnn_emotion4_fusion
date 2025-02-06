@@ -31,7 +31,11 @@ Since the code uses an old version of keras, it needs to be placed at the beginn
 # Installation summary - Dataset FULL2024
 
     git clone https://github.com/trucomanx/fcnn_emotion4_fusion
-    gdown XXXXXXXXXXXXXXX
+    gdown 1gk8BYQDDF_8t_IUC4tLjYXxdWjOFIWtE
+    unzip models_fusion_full.zip -d fcnn_emotion4_fusion/library/FusionEmotion4Lib/models
+    cd fcnn_emotion4_fusion/library
+    python3 setup.py sdist
+    pip3 install dist/FusionEmotion4Lib-*.tar.gz
     
 
 
