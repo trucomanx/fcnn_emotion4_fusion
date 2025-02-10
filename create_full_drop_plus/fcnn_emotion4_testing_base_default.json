@@ -1,0 +1,12 @@
+{
+    "dataset_train_base_dir" : "/media/fernando/Expansion/DATASET/TESE/BER/BER2024/BER2024-FUSION/ber2024-source/ncod20_efficientnet_b3_efficientnet_b3_step1",
+    "dataset_train_labels_file" : "train.csv",
+    "dataset_dummy_base_dir" : "/media/fernando/Expansion/DATASET/TESE/BER/BER2024/BER2024-FUSION/dummy/L30000_p0.15",
+    "dataset_dummy_labels_file" : "train.csv",
+    "dataset_test_base_dir" : "/media/fernando/Expansion/DATASET/TESE/BER/BER2024/BER2024-FUSION/ber2024-source/ncod20_efficientnet_b3_efficientnet_b3_step1",
+    "dataset_test_labels_file" : "test.csv",
+    "dataset_name" : "ber2024-fusion",
+    "batch_size" : 1024,
+    "epochs" : 100,
+    "output_base_dir" : "/media/fernando/Expansion/OUTPUTS/DOCTORADO2/fcnn_emotion4_fusion_1"
+}
