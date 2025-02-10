@@ -4,41 +4,41 @@ PyCommand='#!/usr/bin/python3
 
 json_filename="testing_data_results.json"
 
-model_list=["cls_ncod6",
-            "cls_ncod7",
-            "cls_ncod8",
-            "cls_ncod9",
-            "cls_ncod10",
-            "cls_ncod11",
-            "cls_ncod12",
-            "cls_ncod13",
-            "cls_ncod14",
-            "cls_ncod15",
-            "cls_ncod16",
-            "cls_ncod17",
-            "cls_ncod18",
-            "cls_ncod19",
-            "cls_ncod20",
-            "cls_ncod21",
-            "cls_ncod22",
-            "cls_ncod23",
-            "cls_ncod24",
-            "cls_ncod25",
-            "cls_ncod26",
-            "cls_ncod27",
-            "cls_ncod28",
-            "cls_ncod29",
-            "cls_ncod30",
-            "cls_ncod31",
-            "cls_ncod32",
-            "cls_ncod33",
-            "cls_ncod34",
-            "cls_ncod35",
-            "cls_ncod36",
-            "cls_ncod37",
-            "cls_ncod38",
-            "cls_ncod39",
-            "cls_ncod40"
+model_list=["cls_minus81_ncod6",
+            "cls_minus81_ncod7",
+            "cls_minus81_ncod8",
+            "cls_minus81_ncod9",
+            "cls_minus81_ncod10",
+            "cls_minus81_ncod11",
+            "cls_minus81_ncod12",
+            "cls_minus81_ncod13",
+            "cls_minus81_ncod14",
+            "cls_minus81_ncod15",
+            "cls_minus81_ncod16",
+            "cls_minus81_ncod17",
+            "cls_minus81_ncod18",
+            "cls_minus81_ncod19",
+            "cls_minus81_ncod20",
+            "cls_minus81_ncod21",
+            "cls_minus81_ncod22",
+            "cls_minus81_ncod23",
+            "cls_minus81_ncod24",
+            "cls_minus81_ncod25",
+            "cls_minus81_ncod26",
+            "cls_minus81_ncod27",
+            "cls_minus81_ncod28",
+            "cls_minus81_ncod29",
+            "cls_minus81_ncod30",
+            "cls_minus81_ncod31",
+            "cls_minus81_ncod32",
+            "cls_minus81_ncod33",
+            "cls_minus81_ncod34",
+            "cls_minus81_ncod35",
+            "cls_minus81_ncod36",
+            "cls_minus81_ncod37",
+            "cls_minus81_ncod38",
+            "cls_minus81_ncod39",
+            "cls_minus81_ncod40"
             ];
 
 info_list=[ "test_categorical_accuracy",
@@ -60,38 +60,38 @@ BaseDir='/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando'
 
 OutDir=$BaseDir'/OUTPUTS/DOCTORADO2/fcnn_emotion4_fusion_full'
 
-ModelBaseDir=$BaseDir'/OUTPUTS/DOCTORADO2/fcnn_emotion4_fusion_full/full2024-fusion-drop-plus/training_validation_holdout'
+ModelBaseDir=$BaseDir'/OUTPUTS/DOCTORADO2/fcnn_emotion4_fusion_full/full2024-fusion-drop-plus-minus81/training_validation_holdout'
 
-DName='full2024-fusion-drop-plus'
+DName='full2024-fusion-drop-plus-minus81'
 
 ################################################################################
 
-TestDName='full2024-fusion-drop-face25'
+#TestDName='full2024-fusion-drop-face25'
 #TestDName='full2024-fusion-drop-face10'
 #TestDName='full2024-fusion-drop-plus'
-#TestDName='full2024-fusion'
+TestDName='full2024-fusion'
 
 
 if [ "$TestDName" = "full2024-fusion-drop-face25" ]; then
-    InTsD=$BaseDir'/DATASET/TESE/full2024-fusion-drop-face25/ncod81_efficientnet_b3_efficientnet_b3'
+    InTsD=$BaseDir'/DATASET/TESE/full2024-fusion-drop-face25/ncod81_efficientnet_b3_efficientnet_b3_minus'
     InTsF='test.csv'
     BaseName='testing_base-drop-face25'
 fi
 
 if [ "$TestDName" = "full2024-fusion-drop-face10" ]; then
-    InTsD=$BaseDir'/DATASET/TESE/full2024-fusion-drop-face10/ncod81_efficientnet_b3_efficientnet_b3'
+    InTsD=$BaseDir'/DATASET/TESE/full2024-fusion-drop-face10/ncod81_efficientnet_b3_efficientnet_b3_minus'
     InTsF='test.csv'
     BaseName='testing_base-drop-face10'
 fi
 
 if [ "$TestDName" = "full2024-fusion-drop-plus" ]; then
-    InTsD=$BaseDir'/DATASET/TESE/full2024-fusion-drop-plus/ncod81_efficientnet_b3_efficientnet_b3'
+    InTsD=$BaseDir'/DATASET/TESE/full2024-fusion-drop-plus/ncod81_efficientnet_b3_efficientnet_b3_minus'
     InTsF='test.csv'
     BaseName='testing_base-drop-plus'
 fi
 
 if [ "$TestDName" = "full2024-fusion" ]; then
-    InTsD=$BaseDir'/DATASET/TESE/full2024-fusion/ncod81_efficientnet_b3_efficientnet_b3'
+    InTsD=$BaseDir'/DATASET/TESE/full2024-fusion/ncod81_efficientnet_b3_efficientnet_b3_minus'
     InTsF='test.csv'
     BaseName='testing_base'
 fi
@@ -111,14 +111,15 @@ for i in "${!NcodList[@]}" ; do
     echo " "
     Ncod=${NcodList[$i]}
     
-    ModelFile=$ModelBaseDir/'cls_ncod'$Ncod'/model_ncod'$Ncod'.h5'
+    ModelFile=$ModelBaseDir/'cls_minus81_ncod'$Ncod'/model_ncod'$Ncod'.h5'
     python3 testing_base.py --ncod $Ncod \
                             --dataset-test-dir $InTsD \
                             --dataset-test-file $InTsF \
                             --dataset-name $DName \
                             --base-name $BaseName \
                             --model-file $ModelFile \
-                            --output-dir $OutDir
+                            --output-dir $OutDir \
+                            --minus 81
 done
 
 rm -f testing_base.py
