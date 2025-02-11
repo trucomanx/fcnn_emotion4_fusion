@@ -28,17 +28,7 @@ model_list=["cls_ncod6",
             "cls_ncod27",
             "cls_ncod28",
             "cls_ncod29",
-            "cls_ncod30",
-            "cls_ncod31",
-            "cls_ncod32",
-            "cls_ncod33",
-            "cls_ncod34",
-            "cls_ncod35",
-            "cls_ncod36",
-            "cls_ncod37",
-            "cls_ncod38",
-            "cls_ncod39",
-            "cls_ncod40"
+            "cls_ncod30"
             ];
 
 info_list=[ "test_categorical_accuracy",
@@ -58,18 +48,18 @@ image_ext=".eps";
 BaseDir='/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando'
 
 
-OutDir=$BaseDir'/OUTPUTS/DOCTORADO2/FUSION/fcnn_emotion4_fusion_full_drop'
+OutDir=$BaseDir'/OUTPUTS/DOCTORADO2/fcnn_emotion4_fusion_full'
 
-ModelBaseDir=$BaseDir'/OUTPUTS/DOCTORADO2/FUSION/fcnn_emotion4_fusion_full_drop/full2024-fusion-drop-plus/training_validation_holdout'
+ModelBaseDir=$BaseDir'/OUTPUTS/DOCTORADO2/FUSION/fcnn_emotion4_fusion_full/full2024-fusion/training_validation_holdout'
 
-DName='full2024-fusion-drop-plus'
+DName='full2024-fusion'
 
 ################################################################################
 
-TestDName='full2024-fusion-drop-face25'
+#TestDName='full2024-fusion-drop-face25'
 #TestDName='full2024-fusion-drop-face10'
 #TestDName='full2024-fusion-drop-plus'
-#TestDName='full2024-fusion'
+TestDName='full2024-fusion'
 
 
 if [ "$TestDName" = "full2024-fusion-drop-face25" ]; then
@@ -105,7 +95,7 @@ echo "$PyCommand" | cat - 'main.py' > temp && mv temp $OutDir/$DName/$BaseName/'
 
 ipynb-py-convert testing_base.ipynb testing_base.py
 
-NcodList=(6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40)
+NcodList=(6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 )
 
 for i in "${!NcodList[@]}" ; do 
     echo " "
