@@ -37,5 +37,14 @@ Since the code uses an old version of keras, it needs to be placed at the beginn
     python3 setup.py sdist
     pip3 install dist/FusionEmotion4Lib-*.tar.gz
     
+# Installation summary - Dataset FULL2024-DROP-FACE
 
+    git clone https://github.com/trucomanx/fcnn_emotion4_fusion
+    gdown 1DFduCOACBDi7AM5rstCItWP3tRj7Jqc4
+    unzip models_fusion_full_drop_plus.zip -d fcnn_emotion4_fusion/library/FusionEmotion4Lib/models
+    cd fcnn_emotion4_fusion/library
+    python3 setup.py sdist
+    pip3 install dist/FusionEmotion4Lib-*.tar.gz
+ 
+    
 
