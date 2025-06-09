@@ -10,7 +10,10 @@ Since the code uses an old version of keras, it needs to be placed at the beginn
     import FusionEmotion4Lib.Classifier as fec
     import numpy as np
 
-    cls=fec.Emotion4Classifier();
+    # cls=fec.Emotion4Classifier(ncod=20,skel_size=None); # Without drop-face and without skel minus
+    # cls=fec.Emotion4Classifier(ncod=11,skel_size=81);   # Without drop-face and with skel minus
+    # cls=fec.Emotion4Classifier(ncod=39,skel_size=81);   # With drop-face and with skel minus
+    cls=fec.Emotion4Classifier(ncod=39,skel_size=81);
 
     vec=np.random.rand(12);
 
