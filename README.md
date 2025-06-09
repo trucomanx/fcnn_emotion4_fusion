@@ -15,7 +15,7 @@ Since the code uses an old version of keras, it needs to be placed at the beginn
     # cls=fec.Emotion4Classifier(ncod=39,skel_size=81);   # With drop-face and with skel minus
     cls=fec.Emotion4Classifier(ncod=39,skel_size=81);
 
-    vec=np.random.rand(12);
+    vec=np.random.rand(89); # 81+4+4
 
     res=cls.predict_vec(vec);
 
