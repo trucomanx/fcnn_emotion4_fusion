@@ -43,9 +43,9 @@ image_ext=".eps";
 
 # HD
 #BaseDir='/media/maquina02/HD/Dados/Fernando'
-#BaseDir='/media/fernando/Expansion'
+BaseDir='/media/shannon/Expansion'
 #BaseDir='/media/fernando/B0EA304AEA300EDA/Dados/Fernando'
-BaseDir='/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando'
+#BaseDir='/mnt/8811f502-ae19-4dd8-8371-f1915178f581/Fernando'
 
 
 OutDir=$BaseDir'/OUTPUTS/DOCTORADO2/fcnn_emotion4_fusion_full'
@@ -56,10 +56,10 @@ DName='full2024-fusion-minus81'
 
 ################################################################################
 
-TestDName='full2024-fusion-drop-face25'
+#TestDName='full2024-fusion-drop-face25'
 #TestDName='full2024-fusion-drop-face10'
 #TestDName='full2024-fusion-drop-plus'
-#TestDName='full2024-fusion'
+TestDName='full2024-fusion'
 
 
 if [ "$TestDName" = "full2024-fusion-drop-face25" ]; then
@@ -105,6 +105,7 @@ for i in "${!NcodList[@]}" ; do
     python3 testing_base.py --ncod $Ncod \
                             --dataset-test-dir $InTsD \
                             --dataset-test-file $InTsF \
+                            --times 10 \
                             --dataset-name $DName \
                             --base-name $BaseName \
                             --model-file $ModelFile \
